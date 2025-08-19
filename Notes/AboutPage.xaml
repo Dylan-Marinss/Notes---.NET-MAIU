@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.AboutPage"
+             Title="AboutPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+        <Image
+            Source="giticon.jpg"
+            HeightRequest="185"
+            Aspect="AspectFit"
+            SemanticProperties.Description="Icone do github" />
+        
+            <Label 
+            Text="Notes App V1.0"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button
+            x:Name="GitHubBnt"
+            Text="Acesse meu GitHub" 
+            SemanticProperties.Hint="Vai para o git hub"
+            Clicked="OnClicked"
+            HorizontalOptions="Center"  />
+
+            <Label 
+             Text="Desenvolvido por: Dylan 2DS"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" />
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
