@@ -2,24 +2,29 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+        string caminho = Path.Combine(FileSystem.AppDataDirectory, "arquivo"); 
         public MainPage()
         {
             InitializeComponent();
+            if(File.Exists(caminho))
+            TextEditor.Text = File.ReadAllText(caminho); 
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void SalvarBtn_Clicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            string conteudo = TextEditor.Text;
+            File.WriteAllText(caminho, conteudo);
+            DisplayAlert("Arquivo Salvo", $"Arquivo {caminho} foi salvo com sucesso", "ok");
         }
+        private void ApagarBtn_Clicked(object sender, EventArgs e)
+        {
+            string conteudo = TextEditor.Text;
+            File.Delete(caminho);
+            DisplayAlert("Arquivo Apagado", "Arquivo Apagado com sucesso", "Ok");
+            TextEditor.Text = string.Empty;
+        }
+
+        
     }
 
 }
